@@ -1,0 +1,63 @@
+{
+  "name": "agent-mailbox",
+  "version": "1.0.0",
+  "description": "Production-grade inter-agent messaging for multi-agent AI systems. SQLite-backed with FTS5 search, visibility timeouts, dead letter queues, typed payloads, and more.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./plugin": {
+      "import": "./dist/plugin.js",
+      "types": "./dist/plugin.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir dist --target bun && bun build ./src/plugin.ts --outdir dist --target bun && bun x tsc --emitDeclarationOnly --outDir dist",
+    "test": "bun test",
+    "lint": "bun x tsc --noEmit",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "agent",
+    "mailbox",
+    "multi-agent",
+    "messaging",
+    "sqlite",
+    "fts5",
+    "queue",
+    "ai",
+    "llm",
+    "opencode",
+    "plugin",
+    "inter-agent",
+    "communication"
+  ],
+  "author": "lleontor705",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lleontor705/agent-mailbox.git"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@opencode-ai/plugin": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.2.26",
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.7.0"
+  }
+}
