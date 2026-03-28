@@ -24,7 +24,7 @@ Production-grade inter-agent messaging for multi-agent AI systems. SQLite-backed
 ## Install
 
 ```bash
-bun add agent-mailbox
+bun add agent-mailbox-core
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ bun add agent-mailbox
 ### Standalone (library)
 
 ```ts
-import { Mailbox } from "agent-mailbox";
+import { Mailbox } from "agent-mailbox-core/lib";
 
 const mailbox = new Mailbox({ dbPath: "./mailbox.db" });
 
@@ -64,13 +64,13 @@ console.log(mailbox.metrics());
 mailbox.close();
 ```
 
-### OpenCode Plugin
+### OpenCode Plugin (auto-install)
 
 In your `opencode.json`:
 
 ```json
 {
-  "plugin": ["agent-mailbox/plugin"]
+  "plugin": ["agent-mailbox-core@latest"]
 }
 ```
 

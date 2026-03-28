@@ -1,6 +1,6 @@
 {
   "name": "agent-mailbox-core",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Production-grade inter-agent messaging for multi-agent AI systems. SQLite-backed with FTS5 search, visibility timeouts, dead letter queues, typed payloads, and more.",
   "type": "module",
   "main": "dist/index.js",
@@ -10,9 +10,9 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./plugin": {
-      "import": "./dist/plugin.js",
-      "types": "./dist/plugin.d.ts"
+    "./lib": {
+      "import": "./dist/lib.js",
+      "types": "./dist/lib.d.ts"
     }
   },
   "files": [
@@ -21,7 +21,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "bun build ./src/index.ts --outdir dist --target bun && bun build ./src/plugin.ts --outdir dist --target bun && bun x tsc --emitDeclarationOnly --outDir dist",
+    "build": "bun build ./src/index.ts --outdir dist --target bun && bun build ./src/lib.ts --outdir dist --target bun && bun x tsc --emitDeclarationOnly --outDir dist",
     "test": "bun test",
     "lint": "bun x tsc --noEmit"
   },

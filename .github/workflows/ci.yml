@@ -72,12 +72,12 @@ jobs:
         run: rm -rf dist
 
       - name: Build
-        run: bun build ./src/index.ts --outdir dist --target bun --sourcemap=external && bun build ./src/plugin.ts --outdir dist --target bun --sourcemap=external && bun x tsc --emitDeclarationOnly --outDir dist
+        run: bun build ./src/index.ts --outdir dist --target bun --sourcemap=external && bun build ./src/lib.ts --outdir dist --target bun --sourcemap=external && bun x tsc --emitDeclarationOnly --outDir dist
 
       - name: Verify dist contents
         run: |
           test -f dist/index.js || { echo "::error::dist/index.js missing"; exit 1; }
-          test -f dist/plugin.js || { echo "::error::dist/plugin.js missing"; exit 1; }
+          test -f dist/lib.js || { echo "::error::dist/lib.js missing"; exit 1; }
           test -f dist/index.d.ts || { echo "::error::dist/index.d.ts missing"; exit 1; }
           echo "dist/ contents:"
           ls -la dist/
