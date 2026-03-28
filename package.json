@@ -1,6 +1,6 @@
 {
   "name": "agent-mailbox-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Production-grade inter-agent messaging for multi-agent AI systems. SQLite-backed with FTS5 search, visibility timeouts, dead letter queues, typed payloads, and more.",
   "type": "module",
   "main": "dist/index.js",

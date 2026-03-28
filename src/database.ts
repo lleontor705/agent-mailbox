@@ -3,11 +3,21 @@
  */
 
 import { Database } from "bun:sqlite";
+import { mkdirSync, existsSync } from "node:fs";
+import { dirname } from "node:path";
 import type { ResolvedConfig } from "./types.js";
 
 const SCHEMA_VERSION = 1;
 
 export function initDatabase(config: ResolvedConfig): Database {
+  // Ensure parent directory exists for non-memory databases
+  if (config.dbPath !== ":memory:") {
+    const dir = dirname(config.dbPath);
+    if (!existsSync(dir)) {
+      mkdirSync(dir, { recursive: true });
+    }
+  }
+
   const db = new Database(config.dbPath);
 
   if (config.walMode) {
