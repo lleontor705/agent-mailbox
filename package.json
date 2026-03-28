@@ -23,8 +23,7 @@
   "scripts": {
     "build": "bun build ./src/index.ts --outdir dist --target bun && bun build ./src/plugin.ts --outdir dist --target bun && bun x tsc --emitDeclarationOnly --outDir dist",
     "test": "bun test",
-    "lint": "bun x tsc --noEmit",
-    "prepublishOnly": "bun run build"
+    "lint": "bun x tsc --noEmit"
   },
   "keywords": [
     "agent",
