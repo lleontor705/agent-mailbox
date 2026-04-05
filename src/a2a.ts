@@ -474,6 +474,7 @@ export class A2AAdapter {
       id: agent.name,
       name: agent.name,
       role: agent.role ?? undefined,
+      capabilities: [],
       status: agent.lastActive ? "active" as const : "inactive" as const,
       last_seen: agent.lastActive ?? new Date().toISOString(),
     }));
