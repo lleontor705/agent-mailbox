@@ -1,6 +1,8 @@
 name: CI
 
 on:
+  push:
+    branches: [develop, main]
   pull_request:
     branches: [develop, main]
 
@@ -8,21 +10,13 @@ permissions:
   contents: read
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-      - name: Cache bun dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-${{ runner.os }}-
-      - run: bun install --frozen-lockfile
-      - name: Type check
-        run: bun run lint
-      - name: Run tests
-        run: bun test
+  quality:
+    uses: lleontor705/ats-deploy/.github/workflows/quality-node.yml@main
+    with:
+      node-version: "22"
+      package-manager: "bun"
+      lint-command: "bun run lint"
+      test-command: "bun test"
+
+  security:
+    uses: lleontor705/ats-deploy/.github/workflows/security-scan.yml@main

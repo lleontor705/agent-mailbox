@@ -24,7 +24,8 @@
     "build": "bun build ./src/index.ts --outdir dist --target bun && bun build ./src/lib.ts --outdir dist --target bun && bun x tsc --emitDeclarationOnly --outDir dist",
     "test": "bun test",
     "lint": "bun x tsc --noEmit",
-    "prepublishOnly": "npm run build && npm test"
+    "prepublishOnly": "npm run build && npm test",
+    "prepare": "husky"
   },
   "keywords": [
     "agent",
@@ -58,7 +59,8 @@
   "devDependencies": {
     "@opencode-ai/plugin": "^1.2.26",
     "@types/bun": "^1.2.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "husky": "^9.1.7"
   },
   "engines": {
     "node": ">=18.0.0",
